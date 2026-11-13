@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Miguel Martinez | Desarrollador</title>
+    <meta name="description" content="Portafolio de Carlos Miguel Martinez: proyectos de desarrollo web publicados en GitHub.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Carlos Miguel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header id="about" class="hero">
+    <div class="container">
+        <p class="hero-role">Desarrollador en formación, Riwi</p>
+        <h1>Carlos Miguel<br>Martinez</h1>
+        <p class="hero-text">Aprendo construyendo. Cada carpeta de abajo es un proyecto que hice y subí a GitHub.</p>
+        <div class="d-flex flex-wrap gap-3">
+            <a href="#projects" class="btn btn-sun btn-lg">Ver proyectos</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg">Escribirme</a>
+        </div>
+    </div>
+</header>
+
+<main id="projects" class="container projects">
+    <div class="projects-head">
+        <div>
+            <h2>Mis proyectos</h2>
+            <p class="projects-count" id="count" aria-live="polite"></p>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-sun" id="btn-new">Nueva carpeta</button>
+            <button type="button" class="btn btn-outline-light" id="btn-export">Exportar copia</button>
+            <button type="button" class="btn btn-outline-light" id="btn-import">Importar copia</button>
+            <input type="file" id="import-file" accept="application/json,.json" hidden>
+        </div>
+    </div>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    <div class="row g-4" id="grid"></div>
+</main>
+
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2>Contacto</h2>
+        <p>¿Tienes una idea o una oportunidad? Escríbeme.</p>
+        <a href="mailto:carlosmiguelriwi@gmail.com" class="btn btn-sun btn-lg">Enviar correo</a>
+    </div>
+</section>
+
+<footer class="text-center py-3">
+    <p class="mb-0">&copy; 2026 Carlos Miguel Martinez. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Modal: crear / editar carpeta -->
+<div class="modal fade" id="folderModal" tabindex="-1" aria-labelledby="folderModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content folder-form" id="folder-form" novalidate>
+            <div class="modal-header border-0">
+                <h2 class="modal-title fs-4" id="folderModalTitle">Nueva carpeta</h2>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="f-name" class="form-label">Nombre del proyecto</label>
+                    <input type="text" class="form-control" id="f-name" maxlength="60" required>
+                    <div class="invalid-feedback">Escribe un nombre.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="f-url" class="form-label">URL de GitHub</label>
+                    <input type="url" class="form-control" id="f-url" placeholder="https://github.com/usuario/proyecto">
+                    <div class="invalid-feedback">Usa una URL que empiece con http:// o https://</div>
+                </div>
+                <div class="mb-3">
+                    <label for="f-desc" class="form-label">Descripción corta (opcional)</label>
+                    <input type="text" class="form-control" id="f-desc" maxlength="120">
+                </div>
+                <div class="mb-2">
+                    <label for="f-cover" class="form-label">Portada</label>
+                    <input type="file" class="form-control" id="f-cover" accept="image/*">
+                </div>
+                <div class="mb-3">
+                    <label for="f-cover-url" class="form-label">O pega la URL de una imagen</label>
+                    <input type="url" class="form-control" id="f-cover-url" placeholder="https://...">
+                </div>
+                <div class="cover-preview" id="cover-preview" hidden>
+                    <img alt="Vista previa de la portada" id="cover-img">
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-sun" id="f-submit">Guardar carpeta</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
